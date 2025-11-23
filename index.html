@@ -1,0 +1,1404 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospitality Industry Introduction</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      line-height: 1.6;
+      height: 100%;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Hero Section with Background Image */
+    .hero {
+      background: linear-gradient(rgba(44, 95, 124, 0.75), rgba(26, 58, 77, 0.85)), 
+                  url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=600&fit=crop');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 40px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      margin: 0 0 20px 0;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .hero p {
+      font-size: 24px;
+      margin: 0;
+      opacity: 0.95;
+      font-style: italic;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+
+    /* Content Section */
+    .content {
+      flex: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 40px;
+      width: 100%;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .intro h2 {
+      font-size: 40px;
+      color: #2c5f7c;
+      margin: 0 0 20px 0;
+    }
+
+    .intro-text {
+      font-size: 20px;
+      color: #4a5568;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* Sectors Grid */
+    .sectors {
+      margin-bottom: 60px;
+    }
+
+    .sectors h2 {
+      font-size: 36px;
+      color: #2c5f7c;
+      text-align: center;
+      margin: 0 0 50px 0;
+    }
+
+    .sectors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .sector-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .sector-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .sector-image {
+      width: 100%;
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+      background: #f0f0f0;
+    }
+
+    .sector-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .sector-card:hover .sector-image img {
+      transform: scale(1.05);
+    }
+
+    .sector-content {
+      padding: 25px;
+    }
+
+    .sector-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .sector-icon {
+      font-size: 36px;
+    }
+
+    .expand-icon {
+      font-size: 24px;
+      color: #d4a574;
+      transition: transform 0.3s ease;
+    }
+
+    .sector-card.expanded .expand-icon {
+      transform: rotate(180deg);
+    }
+
+    .sector-card h3 {
+      font-size: 24px;
+      color: #2c5f7c;
+      margin: 0 0 12px 0;
+    }
+
+    .sector-card .short-desc {
+      font-size: 16px;
+      color: #4a5568;
+      margin: 0 0 15px 0;
+    }
+
+    .sector-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .sector-card.expanded .sector-details {
+      max-height: 2000px;
+    }
+
+    .examples-title {
+      font-size: 18px;
+      color: #2c5f7c;
+      font-weight: 600;
+      margin: 20px 0 15px 0;
+      padding-top: 15px;
+      border-top: 2px solid #f0f0f0;
+    }
+
+    .example-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .example-item {
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .example-item:last-child {
+      border-bottom: none;
+    }
+
+    .example-name {
+      font-weight: 600;
+      color: #2c5f7c;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .example-name::before {
+      content: '✓';
+      color: #d4a574;
+      font-weight: bold;
+    }
+
+    .example-desc {
+      font-size: 14px;
+      color: #718096;
+      margin: 5px 0 0 20px;
+      line-height: 1.5;
+    }
+
+    .hotel-examples {
+      margin: 8px 0 0 20px;
+      padding: 10px;
+      background: #f8f9fa;
+      border-radius: 6px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .hotel-examples strong {
+      color: #2c5f7c;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .clickable-example {
+      cursor: pointer;
+      padding: 8px;
+      margin: 4px 0;
+      border-radius: 4px;
+      transition: background 0.2s ease;
+      display: block;
+    }
+
+    .clickable-example:hover {
+      background: #e8f4f8;
+    }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 16px;
+      max-width: 700px;
+      width: 100%;
+      max-height: 90%;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 16px 16px 0 0;
+    }
+
+    .modal-body {
+      padding: 30px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease;
+    }
+
+    .modal-close:hover {
+      transform: scale(1.1);
+    }
+
+    .modal-title {
+      font-size: 32px;
+      color: #2c5f7c;
+      margin: 0 0 15px 0;
+    }
+
+    .modal-category {
+      display: inline-block;
+      background: #d4a574;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .modal-description {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #4a5568;
+      margin-bottom: 20px;
+    }
+
+    .modal-features {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 0 0;
+    }
+
+    .modal-features li {
+      padding: 8px 0;
+      color: #555;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modal-features li::before {
+      content: '⭐';
+      font-size: 16px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #1a3a4d;
+      color: white;
+      text-align: center;
+      padding: 30px 40px;
+    }
+
+    .footer p {
+      margin: 0;
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    /* Image loading fallback */
+    .sector-image img {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .intro h2 {
+        font-size: 30px;
+      }
+
+      .sectors h2 {
+        font-size: 28px;
+      }
+
+      .content {
+        padding: 40px 20px;
+      }
+
+      .hero {
+        padding: 60px 20px;
+      }
+
+      .sector-image {
+        height: 180px;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="container"><!-- Hero Section -->
+   <header class="hero">
+    <h1 id="main-title">Welcome to the World of Hospitality</h1>
+    <p id="tagline">Where Service Meets Excellence</p>
+   </header><!-- Main Content -->
+   <main class="content"><!-- Introduction -->
+    <section class="intro">
+     <h2 id="intro-title">What is the Hospitality Industry?</h2>
+     <p class="intro-text" id="intro-text">The hospitality industry is a vibrant and diverse sector dedicated to providing exceptional service and memorable experiences. It encompasses businesses that offer accommodation, food and beverage services, entertainment, and travel services, all united by a commitment to guest satisfaction and comfort.</p>
+    </section><!-- Sectors -->
+    <section class="sectors">
+     <h2 id="sectors-title">Key Sectors - Click to Explore</h2>
+     <div class="sectors-grid"><!-- Accommodation -->
+      <div class="sector-card" onclick="toggleSector(this)">
+       <div class="sector-image"><img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400&amp;h=300&amp;fit=crop" alt="Luxury hotel lobby" onerror="this.style.display='none';">
+       </div>
+       <div class="sector-content">
+        <div class="sector-header">
+         <div class="sector-icon">
+          🏨
+         </div>
+         <div class="expand-icon">
+          ▼
+         </div>
+        </div>
+        <h3>Accommodation</h3>
+        <p class="short-desc">Providing comfortable lodging and home-away-from-home experiences</p>
+        <div class="sector-details">
+         <p class="examples-title">Popular Categories &amp; Examples:</p>
+         <ul class="example-list">
+          <li class="example-item">
+           <div class="example-name">
+            Luxury Hotels
+           </div>
+           <div class="example-desc">
+            Five-star properties offering premium amenities, concierge services, fine dining, spas, and exceptional guest experiences
+           </div>
+           <div class="hotel-examples"><strong>Examples (Click to view details):</strong> <span class="clickable-example" onclick="showModal(event, 'ritz')">• The Ritz-Carlton (Global luxury chain)</span> <span class="clickable-example" onclick="showModal(event, 'fourseasons')">• Four Seasons Hotels &amp; Resorts</span> <span class="clickable-example" onclick="showModal(event, 'waldorf')">• Waldorf Astoria Hotels</span> <span class="clickable-example" onclick="showModal(event, 'mandarin')">• Mandarin Oriental</span> <span class="clickable-example" onclick="showModal(event, 'peninsula')">• The Peninsula Hotels</span>
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Boutique Hotels
+           </div>
+           <div class="example-desc">
+            Unique, intimate properties with personalized service, distinctive design, and strong local character
+           </div>
+           <div class="hotel-examples"><strong>Examples (Click to view details):</strong> <span class="clickable-example" onclick="showModal(event, 'ace')">• Ace Hotel (Hip, design-focused chain)</span> <span class="clickable-example" onclick="showModal(event, 'nomad')">• The NoMad Hotel</span> <span class="clickable-example" onclick="showModal(event, 'soho')">• Soho House (Members club hotels)</span>
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Resort Hotels
+           </div>
+           <div class="example-desc">
+            All-inclusive destinations with comprehensive recreational facilities, multiple restaurants, pools, and entertainment
+           </div>
+           <div class="hotel-examples"><strong>Examples (Click to view details):</strong> <span class="clickable-example" onclick="showModal(event, 'atlantis')">• Atlantis Paradise Island (Bahamas)</span> <span class="clickable-example" onclick="showModal(event, 'beaches')">• Beaches Resorts (Caribbean)</span> <span class="clickable-example" onclick="showModal(event, 'clubmed')">• Club Med (Global resorts)</span> <span class="clickable-example" onclick="showModal(event, 'sandals')">• Sandals Resorts (Adults-only luxury)</span>
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Mid-Scale Hotels
+           </div>
+           <div class="example-desc">
+            Comfortable, reliable properties offering good value with standard amenities for business and leisure travelers
+           </div>
+           <div class="hotel-examples"><strong>Examples:</strong> • Hilton Garden Inn<br>
+             • Courtyard by Marriott<br>
+             • Holiday Inn &amp; Holiday Inn Express<br>
+             • Hampton Inn<br>
+             • Best Western Hotels
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Budget Hotels
+           </div>
+           <div class="example-desc">
+            Affordable, no-frills accommodation providing clean, comfortable rooms for value-conscious travelers
+           </div>
+           <div class="hotel-examples"><strong>Examples:</strong> • Motel 6<br>
+             • Super 8 by Wyndham<br>
+             • Days Inn<br>
+             • Travelodge<br>
+             • Premier Inn (UK)
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Vacation Rentals
+           </div>
+           <div class="example-desc">
+            Home-like accommodations with kitchens and living spaces, offering authentic local neighborhood experiences
+           </div>
+           <div class="hotel-examples"><strong>Examples:</strong> • Airbnb (Global platform)<br>
+             • Vrbo (Vacation Rentals by Owner)<br>
+             • HomeAway<br>
+             • Vacasa (Managed rentals)
+           </div></li>
+         </ul>
+        </div>
+       </div>
+      </div><!-- Food & Beverage -->
+      <div class="sector-card" onclick="toggleSector(this)">
+       <div class="sector-image"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&amp;h=300&amp;fit=crop" alt="Restaurant interior" onerror="this.style.display='none';">
+       </div>
+       <div class="sector-content">
+        <div class="sector-header">
+         <div class="sector-icon">
+          🍽️
+         </div>
+         <div class="expand-icon">
+          ▼
+         </div>
+        </div>
+        <h3>Food &amp; Beverage</h3>
+        <p class="short-desc">Delivering culinary excellence and memorable dining experiences</p>
+        <div class="sector-details">
+         <p class="examples-title">Popular Categories &amp; Examples:</p>
+         <ul class="example-list">
+          <li class="example-item">
+           <div class="example-name">
+            Fine Dining Restaurants
+           </div>
+           <div class="example-desc">
+            Michelin-starred and high-end establishments offering gourmet cuisine, sophisticated ambiance, and impeccable service
+           </div>
+           <div class="hotel-examples"><strong>Examples (Click to view details):</strong> <span class="clickable-example" onclick="showModal(event, 'frenchlaundry')">• The French Laundry (Napa Valley)</span> <span class="clickable-example" onclick="showModal(event, 'elevenmp')">• Eleven Madison Park (New York)</span> <span class="clickable-example" onclick="showModal(event, 'perse')">• Per Se (New York)</span> <span class="clickable-example" onclick="showModal(event, 'alinea')">• Alinea (Chicago)</span>
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Casual Dining Chains
+           </div>
+           <div class="example-desc">
+            Popular full-service restaurants providing family-friendly atmospheres, diverse menus, and table service
+           </div>
+           <div class="hotel-examples"><strong>Examples (Click to view details):</strong> <span class="clickable-example" onclick="showModal(event, 'olivegarden')">• Olive Garden (Italian-American)</span> <span class="clickable-example" onclick="showModal(event, 'cheesecake')">• The Cheesecake Factory</span> <span class="clickable-example" onclick="showModal(event, 'applebees')">• Applebee's</span> <span class="clickable-example" onclick="showModal(event, 'redlobster')">• Red Lobster (Seafood)</span>
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Fast Casual Restaurants
+           </div>
+           <div class="example-desc">
+            Quality ingredients with counter service, modern settings, and customizable menu options
+           </div>
+           <div class="hotel-examples"><strong>Examples (Click to view details):</strong> <span class="clickable-example" onclick="showModal(event, 'chipotle')">• Chipotle Mexican Grill</span> <span class="clickable-example" onclick="showModal(event, 'panera')">• Panera Bread</span> <span class="clickable-example" onclick="showModal(event, 'shakeshack')">• Shake Shack</span> <span class="clickable-example" onclick="showModal(event, 'sweetgreen')">• Sweetgreen</span>
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Cafes &amp; Coffee Shops
+           </div>
+           <div class="example-desc">
+            Beverage-focused establishments serving coffee, tea, light meals, and providing community gathering spaces
+           </div>
+           <div class="hotel-examples"><strong>Examples (Click to view details):</strong> <span class="clickable-example" onclick="showModal(event, 'starbucks')">• Starbucks Coffee</span> <span class="clickable-example" onclick="showModal(event, 'dunkin')">• Dunkin' Donuts</span> <span class="clickable-example" onclick="showModal(event, 'peets')">• Peet's Coffee</span> <span class="clickable-example" onclick="showModal(event, 'timhortons')">• Tim Hortons (Canada)</span>
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Bars &amp; Nightlife
+           </div>
+           <div class="example-desc">
+            Beverage-focused venues for evening entertainment, socializing, craft cocktails, and live music
+           </div>
+           <div class="hotel-examples"><strong>Examples:</strong> • Craft cocktail bars<br>
+             • Wine bars and tasting rooms<br>
+             • Brewery taprooms<br>
+             • Sports bars<br>
+             • Rooftop bars and lounges
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Catering Services
+           </div>
+           <div class="example-desc">
+            Event-based food service for weddings, corporate functions, and special occasions with customized menus
+           </div>
+           <div class="hotel-examples"><strong>Examples:</strong> • Hotel catering departments<br>
+             • Corporate catering companies<br>
+             • Wedding catering specialists<br>
+             • Mobile food service providers
+           </div></li>
+         </ul>
+        </div>
+       </div>
+      </div><!-- Travel & Tourism -->
+      <div class="sector-card" onclick="toggleSector(this)">
+       <div class="sector-image"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&amp;h=300&amp;fit=crop" alt="Airplane travel" onerror="this.style.display='none';">
+       </div>
+       <div class="sector-content">
+        <div class="sector-header">
+         <div class="sector-icon">
+          ✈️
+         </div>
+         <div class="expand-icon">
+          ▼
+         </div>
+        </div>
+        <h3>Travel &amp; Tourism</h3>
+        <p class="short-desc">Connecting people to destinations and creating journey experiences</p>
+        <div class="sector-details">
+         <p class="examples-title">Popular Categories &amp; Examples:</p>
+         <ul class="example-list">
+          <li class="example-item">
+           <div class="example-name">
+            Online Travel Agencies
+           </div>
+           <div class="example-desc">
+            Digital platforms helping travelers research, compare, and book complete vacation packages and individual services
+           </div>
+           <div class="hotel-examples"><strong>Examples (Click to view details):</strong> <span class="clickable-example" onclick="showModal(event, 'expedia')">• Expedia</span> <span class="clickable-example" onclick="showModal(event, 'booking')">• Booking.com</span> <span class="clickable-example" onclick="showModal(event, 'kayak')">• Kayak</span> <span class="clickable-example" onclick="showModal(event, 'tripadvisor')">• TripAdvisor</span>
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Tour Operators
+           </div>
+           <div class="example-desc">
+            Organized guided tours and adventure travel companies offering curated, multi-day experiences
+           </div>
+           <div class="hotel-examples"><strong>Examples (Click to view details):</strong> <span class="clickable-example" onclick="showModal(event, 'intrepid')">• Intrepid Travel (Adventure tours)</span> <span class="clickable-example" onclick="showModal(event, 'gadventures')">• G Adventures</span> <span class="clickable-example" onclick="showModal(event, 'contiki')">• Contiki (Youth travel)</span> <span class="clickable-example" onclick="showModal(event, 'viking')">• Viking River Cruises</span>
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Airlines
+           </div>
+           <div class="example-desc">
+            Commercial carriers providing air transportation with in-flight hospitality and customer service
+           </div>
+           <div class="hotel-examples"><strong>Examples (Click to view details):</strong> <span class="clickable-example" onclick="showModal(event, 'delta')">• Delta Air Lines</span> <span class="clickable-example" onclick="showModal(event, 'emirates')">• Emirates</span> <span class="clickable-example" onclick="showModal(event, 'singapore')">• Singapore Airlines</span> <span class="clickable-example" onclick="showModal(event, 'southwest')">• Southwest Airlines</span>
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Cruise Lines
+           </div>
+           <div class="example-desc">
+            All-inclusive floating resort experiences combining transportation, accommodation, dining, and entertainment
+           </div>
+           <div class="hotel-examples"><strong>Examples (Click to view details):</strong> <span class="clickable-example" onclick="showModal(event, 'royalcaribbean')">• Royal Caribbean International</span> <span class="clickable-example" onclick="showModal(event, 'carnival')">• Carnival Cruise Line</span> <span class="clickable-example" onclick="showModal(event, 'norwegian')">• Norwegian Cruise Line</span> <span class="clickable-example" onclick="showModal(event, 'princess')">• Princess Cruises</span>
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Car Rental &amp; Transportation
+           </div>
+           <div class="example-desc">
+            Ground transportation services for destination mobility and local travel convenience
+           </div>
+           <div class="hotel-examples"><strong>Examples:</strong> • Enterprise Rent-A-Car<br>
+             • Hertz<br>
+             • Uber &amp; Lyft<br>
+             • Airport shuttle services<br>
+             • Luxury car services
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Destination Management
+           </div>
+           <div class="example-desc">
+            Local experts providing ground services, activities coordination, and destination experiences
+           </div>
+           <div class="hotel-examples"><strong>Examples:</strong> • Local tour guides<br>
+             • Destination marketing organizations<br>
+             • Event management companies<br>
+             • Activity booking platforms
+           </div></li>
+         </ul>
+        </div>
+       </div>
+      </div><!-- Entertainment -->
+      <div class="sector-card" onclick="toggleSector(this)">
+       <div class="sector-image"><img src="https://images.unsplash.com/photo-1514306191717-452ec28c7814?w=400&amp;h=300&amp;fit=crop" alt="Entertainment venue" onerror="this.style.display='none';">
+       </div>
+       <div class="sector-content">
+        <div class="sector-header">
+         <div class="sector-icon">
+          🎭
+         </div>
+         <div class="expand-icon">
+          ▼
+         </div>
+        </div>
+        <h3>Entertainment &amp; Events</h3>
+        <p class="short-desc">Creating joyful moments, celebrations, and memorable occasions</p>
+        <div class="sector-details">
+         <p class="examples-title">Popular Categories &amp; Examples:</p>
+         <ul class="example-list">
+          <li class="example-item">
+           <div class="example-name">
+            Theme Parks
+           </div>
+           <div class="example-desc">
+            Large-scale entertainment destinations providing immersive experiences, rides, shows, and attractions for all ages
+           </div>
+           <div class="hotel-examples"><strong>Examples (Click to view details):</strong> <span class="clickable-example" onclick="showModal(event, 'disney')">• Walt Disney World Resort</span> <span class="clickable-example" onclick="showModal(event, 'universal')">• Universal Studios</span> <span class="clickable-example" onclick="showModal(event, 'sixflags')">• Six Flags Entertainment</span> <span class="clickable-example" onclick="showModal(event, 'seaworld')">• SeaWorld Parks</span>
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Casinos &amp; Gaming Resorts
+           </div>
+           <div class="example-desc">
+            Integrated entertainment complexes combining gaming, lodging, dining, shopping, and live performances
+           </div>
+           <div class="hotel-examples"><strong>Examples (Click to view details):</strong> <span class="clickable-example" onclick="showModal(event, 'caesars')">• Caesars Palace (Las Vegas)</span> <span class="clickable-example" onclick="showModal(event, 'mgm')">• MGM Grand</span> <span class="clickable-example" onclick="showModal(event, 'venetian')">• The Venetian</span> <span class="clickable-example" onclick="showModal(event, 'wynn')">• Wynn Las Vegas</span>
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Event Venues &amp; Convention Centers
+           </div>
+           <div class="example-desc">
+            Facilities hosting conferences, trade shows, weddings, banquets, and large-scale gatherings
+           </div>
+           <div class="hotel-examples"><strong>Examples:</strong> • Las Vegas Convention Center<br>
+             • McCormick Place (Chicago)<br>
+             • Javits Center (New York)<br>
+             • Hotel ballrooms and banquet halls<br>
+             • Wedding venues and estates
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Sports &amp; Recreation Facilities
+           </div>
+           <div class="example-desc">
+            Active leisure destinations offering golf, skiing, fitness, and outdoor adventure experiences
+           </div>
+           <div class="hotel-examples"><strong>Examples:</strong> • Pebble Beach Golf Resort<br>
+             • Aspen Skiing Company<br>
+             • Equinox Hotels (Fitness-focused)<br>
+             • Country clubs and golf resorts<br>
+             • Adventure and eco-tourism lodges
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Theaters &amp; Performance Venues
+           </div>
+           <div class="example-desc">
+            Live entertainment spaces hosting Broadway shows, concerts, comedy, opera, and performing arts
+           </div>
+           <div class="hotel-examples"><strong>Examples:</strong> • Broadway theaters (New York)<br>
+             • Radio City Music Hall<br>
+             • Comedy clubs<br>
+             • Symphony halls<br>
+             • Outdoor amphitheaters
+           </div></li>
+          <li class="example-item">
+           <div class="example-name">
+            Spas &amp; Wellness Centers
+           </div>
+           <div class="example-desc">
+            Relaxation and rejuvenation facilities offering treatments, therapies, and holistic wellness programs
+           </div>
+           <div class="hotel-examples"><strong>Examples (Click to view details):</strong> <span class="clickable-example" onclick="showModal(event, 'canyonranch')">• Canyon Ranch (Wellness resorts)</span> <span class="clickable-example" onclick="showModal(event, 'miraval')">• Miraval Resorts &amp; Spas</span> <span class="clickable-example" onclick="showModal(event, 'hotelspas')">• Hotel and resort spas</span>
+           </div></li>
+         </ul>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+   </main><!-- Footer -->
+   <footer class="footer">
+    <p>The hospitality industry - Creating memorable experiences, one guest at a time</p>
+    <p style="margin-top: 15px; font-size: 14px; opacity: 0.8;">Created by Ehra Gail Bulawin</p>
+   </footer>
+  </div><!-- Modal for detailed examples -->
+  <div id="exampleModal" class="modal-overlay" onclick="closeModal(event)">
+   <div class="modal-content" onclick="event.stopPropagation()"><button class="modal-close" onclick="closeModal()">×</button> <img id="modalImage" class="modal-image" src="" alt="">
+    <div class="modal-body"><span id="modalCategory" class="modal-category"></span>
+     <h2 id="modalTitle" class="modal-title"></h2>
+     <p id="modalDescription" class="modal-description"></p>
+     <ul id="modalFeatures" class="modal-features"></ul>
+    </div>
+   </div>
+  </div>
+  <script>
+    // Database of all examples with details
+    const exampleData = {
+      // Accommodation - Luxury Hotels
+      'ritz': {
+        category: 'Luxury Hotel',
+        title: 'The Ritz-Carlton',
+        image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=400&fit=crop',
+        description: 'The Ritz-Carlton is a global luxury hotel brand known for exceptional service, elegant accommodations, and world-class amenities. With properties in major cities and resort destinations worldwide, each hotel offers refined elegance and personalized guest experiences.',
+        features: ['24-hour personalized concierge service', 'Fine dining restaurants with award-winning chefs', 'Full-service luxury spas and fitness centers', 'Premium bedding and marble bathrooms', 'Club Level with exclusive lounge access', 'Meeting spaces and ballrooms for events']
+      },
+      'fourseasons': {
+        category: 'Luxury Hotel',
+        title: 'Four Seasons Hotels & Resorts',
+        image: 'https://images.unsplash.com/photo-1596436889106-be35e843f974?w=800&h=400&fit=crop',
+        description: 'Four Seasons represents the pinnacle of luxury hospitality with impeccable service and stunning properties in iconic destinations. Known for their attention to detail and commitment to guest satisfaction, each property offers unique local experiences.',
+        features: ['Award-winning spa and wellness facilities', 'Multiple on-site restaurants and bars', 'Infinity pools and premium beach access', 'Personalized butler service in suites', 'Kids programs and family amenities', 'Executive business centers']
+      },
+      'waldorf': {
+        category: 'Luxury Hotel',
+        title: 'Waldorf Astoria Hotels',
+        image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=400&fit=crop',
+        description: 'Waldorf Astoria Hotels & Resorts offers unforgettable experiences in iconic destinations. With a legacy of timeless elegance and legendary service, these properties combine historic grandeur with modern luxury.',
+        features: ['Historic architecture and classic elegance', 'Michelin-starred dining options', 'Personal concierge services', 'Luxurious spa treatments', 'Grand ballrooms and event spaces', 'Premium location in city centers']
+      },
+      'mandarin': {
+        category: 'Luxury Hotel',
+        title: 'Mandarin Oriental',
+        image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=400&fit=crop',
+        description: 'Mandarin Oriental Hotel Group is internationally recognized for creating extraordinary experiences. Known for their Oriental heritage and contemporary luxury, each hotel combines elegance with authentic cultural touches.',
+        features: ['Award-winning holistic spas', 'Innovative contemporary dining', 'Panoramic city or harbor views', 'Butler service and personalized amenities', 'Rooftop bars and lounges', 'State-of-the-art fitness facilities']
+      },
+      'peninsula': {
+        category: 'Luxury Hotel',
+        title: 'The Peninsula Hotels',
+        image: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800&h=400&fit=crop',
+        description: 'The Peninsula Hotels are renowned for blending the best of Eastern and Western hospitality. With a fleet of luxury house cars and impeccable service standards, Peninsula represents timeless luxury and modern innovation.',
+        features: ['Signature Peninsula Academy experiences', 'Fleet of Rolls-Royce or BMW house cars', 'Rooftop restaurants with stunning views', 'Technology-enhanced rooms and suites', 'Peninsula Spa with Asian-inspired treatments', 'White-glove service and attention to detail']
+      },
+
+      // Accommodation - Boutique Hotels
+      'ace': {
+        category: 'Boutique Hotel',
+        title: 'Ace Hotel',
+        image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&h=400&fit=crop',
+        description: 'Ace Hotel brings a fresh, creative approach to hospitality with design-forward spaces that celebrate local culture and community. Each property features unique design collaborations, live music venues, and vibrant social spaces.',
+        features: ['Hip, design-focused interiors', 'On-site coffee shops and bars', 'Live music and cultural events', 'Local artist collaborations', 'Vintage and custom furnishings', 'Creative workspaces and communal areas']
+      },
+      'nomad': {
+        category: 'Boutique Hotel',
+        title: 'The NoMad Hotel',
+        image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&h=400&fit=crop',
+        description: 'The NoMad Hotel combines Beaux-Arts elegance with modern luxury. Known for exceptional food and beverage programs, each NoMad location features stunning interiors, acclaimed restaurants, and intimate library bars.',
+        features: ['Elegant Beaux-Arts inspired design', 'Acclaimed restaurant and bar programs', 'Library-style lounges', 'Curated art collections', 'Personalized service', 'Luxurious room amenities']
+      },
+      'soho': {
+        category: 'Boutique Hotel',
+        title: 'Soho House',
+        image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=400&fit=crop',
+        description: 'Soho House offers members-only club hotels that blend accommodation with exclusive social spaces. Known for their creative community focus, properties feature restaurants, screening rooms, and rooftop pools.',
+        features: ['Members club with global access', 'Creative industry community', 'Rooftop pools and terraces', 'Private screening rooms', 'Co-working spaces', 'Farm-to-table restaurants']
+      },
+
+      // Accommodation - Resorts
+      'atlantis': {
+        category: 'Resort Hotel',
+        title: 'Atlantis Paradise Island',
+        image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=400&fit=crop',
+        description: 'Atlantis Paradise Island in the Bahamas is a world-renowned resort featuring the largest open-air marine habitat, thrilling water parks, and luxurious accommodations. This iconic destination offers endless entertainment for families and couples.',
+        features: ['Aquaventure water park with slides', 'Marine habitat with 50,000 sea animals', 'Casino and nightlife entertainment', 'Championship golf course', '21 restaurants and 19 bars', 'Private beach and pool areas']
+      },
+      'beaches': {
+        category: 'Resort Hotel',
+        title: 'Beaches Resorts',
+        image: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&h=400&fit=crop',
+        description: 'Beaches Resorts offers luxury all-inclusive Caribbean vacations for families and everyone. With locations in Jamaica and Turks & Caicos, these resorts feature water parks, kids camps, and unlimited dining and activities.',
+        features: ['All-inclusive luxury for families', 'Waterparks and kids clubs', 'Unlimited land and water sports', 'Xbox play lounges', 'Multiple pools including lazy rivers', 'Sesame Street character experiences']
+      },
+      'clubmed': {
+        category: 'Resort Hotel',
+        title: 'Club Med',
+        image: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&h=400&fit=crop',
+        description: 'Club Med pioneered the all-inclusive resort concept with properties in stunning locations worldwide. Known for their village-style resorts, Club Med offers activities, entertainment, and dining all included in one price.',
+        features: ['All-inclusive resort villages', 'Ski and beach destinations', 'Kids clubs by age group', 'Water and land sports included', 'Evening entertainment and shows', 'Group fitness and wellness programs']
+      },
+      'sandals': {
+        category: 'Resort Hotel',
+        title: 'Sandals Resorts',
+        image: 'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=800&h=400&fit=crop',
+        description: 'Sandals Resorts offers luxury all-inclusive vacations exclusively for couples in the Caribbean. With unique concepts like overwater bungalows and swim-up suites, Sandals creates romantic experiences with world-class service.',
+        features: ['Adults-only luxury all-inclusive', 'Butler service in select suites', 'Unlimited gourmet dining', 'Premium liquors and wines included', 'Water sports and scuba diving', 'Exchange privileges between resorts']
+      },
+
+      // Food & Beverage - Fine Dining
+      'frenchlaundry': {
+        category: 'Fine Dining Restaurant',
+        title: 'The French Laundry',
+        image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=400&fit=crop',
+        description: 'The French Laundry in Yountville, California is Chef Thomas Keller\'s iconic three-Michelin-star restaurant. Set in a historic stone building, it offers a daily-changing nine-course tasting menu showcasing the finest ingredients.',
+        features: ['Three Michelin stars', 'Nine-course tasting menu', 'French culinary techniques', 'On-site culinary garden', 'Exceptional wine program', 'Reservations required months in advance']
+      },
+      'elevenmp': {
+        category: 'Fine Dining Restaurant',
+        title: 'Eleven Madison Park',
+        image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&h=400&fit=crop',
+        description: 'Eleven Madison Park in New York City has been named the World\'s Best Restaurant. Now entirely plant-based, this three-Michelin-star restaurant offers an innovative tasting menu in an elegant Art Deco dining room.',
+        features: ['Three Michelin stars', 'Plant-based tasting menu', 'Art Deco elegance', 'Theatrical presentations', 'Personalized guest experiences', 'World-class wine pairings']
+      },
+      'perse': {
+        category: 'Fine Dining Restaurant',
+        title: 'Per Se',
+        image: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=800&h=400&fit=crop',
+        description: 'Per Se, Thomas Keller\'s New York restaurant in Columbus Circle, offers a sophisticated nine-course tasting menu. With floor-to-ceiling windows overlooking Central Park, Per Se delivers an unforgettable fine dining experience.',
+        features: ['Three Michelin stars', 'Daily-changing tasting menu', 'Central Park views', 'Blue Hill Stone Barns partnership', 'Extensive wine cellar', 'Impeccable French service']
+      },
+      'alinea': {
+        category: 'Fine Dining Restaurant',
+        title: 'Alinea',
+        image: 'https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&h=400&fit=crop',
+        description: 'Alinea in Chicago is Chef Grant Achatz\'s groundbreaking three-Michelin-star restaurant known for molecular gastronomy and avant-garde presentations. Each multi-course experience pushes the boundaries of culinary innovation.',
+        features: ['Three Michelin stars', 'Molecular gastronomy techniques', 'Edible helium balloons', 'Interactive plated desserts', 'Seasonal menu innovations', 'Unique service styles']
+      },
+
+      // Food & Beverage - Casual Dining
+      'olivegarden': {
+        category: 'Casual Dining Chain',
+        title: 'Olive Garden',
+        image: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800&h=400&fit=crop',
+        description: 'Olive Garden is America\'s favorite Italian restaurant chain, known for unlimited soup, salad, and breadsticks. With a warm, family-friendly atmosphere and classic Italian-American dishes, it\'s a beloved dining destination.',
+        features: ['Unlimited soup, salad & breadsticks', 'Classic Italian-American menu', 'Family-friendly atmosphere', 'Wine selection', 'Catering services available', 'Locations nationwide']
+      },
+      'cheesecake': {
+        category: 'Casual Dining Chain',
+        title: 'The Cheesecake Factory',
+        image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&h=400&fit=crop',
+        description: 'The Cheesecake Factory offers an extensive menu with over 250 items and more than 30 legendary cheesecake flavors. Known for generous portions and diverse cuisine options, it\'s a dining experience for every taste.',
+        features: ['Over 250 menu items', '30+ cheesecake flavors', 'Generous portion sizes', 'Diverse international cuisine', 'Full bar with cocktails', 'Glamorous interior design']
+      },
+      'applebees': {
+        category: 'Casual Dining Chain',
+        title: 'Applebee\'s',
+        image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=400&fit=crop',
+        description: 'Applebee\'s is a neighborhood grill and bar offering American classics in a welcoming atmosphere. Known for affordable meals, late-night happy hours, and sports viewing, it\'s a community gathering place.',
+        features: ['American comfort food', 'Full bar with cocktails', 'Sports viewing on TVs', 'Late-night happy hour specials', 'Family-friendly menu', 'Community atmosphere']
+      },
+      'redlobster': {
+        category: 'Casual Dining Chain',
+        title: 'Red Lobster',
+        image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&h=400&fit=crop',
+        description: 'Red Lobster is America\'s favorite seafood restaurant, famous for Cheddar Bay Biscuits and fresh seafood. With a nautical theme and casual atmosphere, it offers quality seafood at accessible prices.',
+        features: ['Fresh seafood specialties', 'Famous Cheddar Bay Biscuits', 'Lobster dishes and seasonal offerings', 'Full bar with drinks', 'Family-friendly environment', 'Lunch and dinner specials']
+      },
+
+      // Food & Beverage - Fast Casual
+      'chipotle': {
+        category: 'Fast Casual Restaurant',
+        title: 'Chipotle Mexican Grill',
+        image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&h=400&fit=crop',
+        description: 'Chipotle revolutionized fast casual dining with customizable burritos, bowls, and tacos made with fresh, responsibly-sourced ingredients. Known for "Food with Integrity," each meal is prepared to order.',
+        features: ['Customizable Mexican fare', 'Fresh, responsibly-sourced ingredients', 'No freezers or can openers', 'Digital ordering and pickup', 'Catering services', 'Vegan and vegetarian options']
+      },
+      'panera': {
+        category: 'Fast Casual Restaurant',
+        title: 'Panera Bread',
+        image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=400&fit=crop',
+        description: 'Panera Bread offers bakery-cafe dining with fresh bread, soups, salads, and sandwiches. Known for clean ingredients and comfortable cafe atmosphere, Panera provides a wholesome dining experience.',
+        features: ['Freshly baked bread daily', 'Clean ingredient standards', 'Soups, salads, and sandwiches', 'Breakfast all day', 'Free WiFi and comfortable seating', 'MyPanera rewards program']
+      },
+      'shakeshack': {
+        category: 'Fast Casual Restaurant',
+        title: 'Shake Shack',
+        image: 'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=800&h=400&fit=crop',
+        description: 'Shake Shack started as a hot dog cart and evolved into a modern "roadside" burger stand. Known for premium Angus beef burgers, crinkle-cut fries, and hand-spun shakes, it offers elevated fast food.',
+        features: ['100% Angus beef burgers', 'Hand-spun shakes and concretes', 'Crinkle-cut fries', 'Beer and wine available', 'Sustainable sourcing', 'Modern burger stand atmosphere']
+      },
+      'sweetgreen': {
+        category: 'Fast Casual Restaurant',
+        title: 'Sweetgreen',
+        image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&h=400&fit=crop',
+        description: 'Sweetgreen serves healthy salads and grain bowls with locally-sourced ingredients. Focused on sustainability and community, Sweetgreen makes healthy eating accessible and delicious.',
+        features: ['Locally-sourced organic ingredients', 'Seasonal menu rotations', 'Customizable salads and bowls', 'Mobile ordering and pickup', 'Sustainability focused', 'Nutritional transparency']
+      },
+
+      // Food & Beverage - Cafes
+      'starbucks': {
+        category: 'Cafe & Coffee Shop',
+        title: 'Starbucks Coffee',
+        image: 'https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=800&h=400&fit=crop',
+        description: 'Starbucks is the world\'s largest coffeehouse chain, serving premium coffee, espresso beverages, teas, and food. Known as the "third place" between home and work, Starbucks offers a comfortable community gathering space.',
+        features: ['Premium coffee and espresso', 'Seasonal specialty beverages', 'Mobile ordering and payment', 'Rewards program', 'WiFi and comfortable seating', 'Food and pastry offerings']
+      },
+      'dunkin': {
+        category: 'Cafe & Coffee Shop',
+        title: 'Dunkin\' Donuts',
+        image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=400&fit=crop',
+        description: 'Dunkin\' is America\'s favorite coffee and breakfast destination, known for coffee, donuts, and breakfast sandwiches. With fast service and affordable prices, Dunkin\' keeps America running.',
+        features: ['Coffee and espresso drinks', 'Fresh donuts and bakery items', 'Breakfast sandwiches', 'Fast service drive-thrus', 'Perks rewards program', 'All-day breakfast menu']
+      },
+      'peets': {
+        category: 'Cafe & Coffee Shop',
+        title: 'Peet\'s Coffee',
+        image: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800&h=400&fit=crop',
+        description: 'Peet\'s Coffee pioneered the specialty coffee movement with hand-roasted beans and deep, bold flavors. Known for artisanal roasting and coffee craftsmanship, Peet\'s delivers exceptional coffee experiences.',
+        features: ['Hand-roasted coffee beans', 'Deep, bold roast profiles', 'Specialty espresso drinks', 'Tea selection', 'Comfortable cafe atmosphere', 'Fresh food and pastries']
+      },
+      'timhortons': {
+        category: 'Cafe & Coffee Shop',
+        title: 'Tim Hortons',
+        image: 'https://images.unsplash.com/photo-1514066558159-fc8c737ef259?w=800&h=400&fit=crop',
+        description: 'Tim Hortons is Canada\'s iconic coffee and donut chain, beloved for Timbits, coffee, and breakfast sandwiches. A Canadian cultural institution, Tim Hortons represents community and everyday comfort.',
+        features: ['Premium coffee and lattes', 'Timbits donut holes', 'Breakfast sandwiches', 'Canadian tradition', 'Drive-thru convenience', 'All-day menu options']
+      },
+
+      // Travel & Tourism - Online Agencies
+      'expedia': {
+        category: 'Online Travel Agency',
+        title: 'Expedia',
+        image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=400&fit=crop',
+        description: 'Expedia is one of the world\'s largest online travel agencies, offering comprehensive booking for flights, hotels, car rentals, and vacation packages. With user-friendly tools and competitive pricing, Expedia simplifies travel planning.',
+        features: ['Flight and hotel booking', 'Vacation package deals', 'Car rental services', 'Rewards program', 'Price match guarantee', 'Mobile app with exclusive deals']
+      },
+      'booking': {
+        category: 'Online Travel Agency',
+        title: 'Booking.com',
+        image: 'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=800&h=400&fit=crop',
+        description: 'Booking.com is the world\'s leading accommodation booking platform with millions of properties worldwide. Known for easy cancellation policies and extensive property selection, it connects travelers with perfect stays.',
+        features: ['Millions of properties worldwide', 'User reviews and ratings', 'Free cancellation on many bookings', 'Price match guarantee', 'Genius loyalty program', '24/7 customer service']
+      },
+      'kayak': {
+        category: 'Online Travel Agency',
+        title: 'Kayak',
+        image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&h=400&fit=crop',
+        description: 'Kayak is a travel search engine that compares hundreds of sites to help find the best travel deals. Known for innovative search tools and price alerts, Kayak empowers travelers to find their ideal options.',
+        features: ['Meta-search across hundreds of sites', 'Price alerts and forecasts', 'Flexible dates search', 'Explore tool for inspiration', 'Trip planning features', 'Mobile app with exclusive features']
+      },
+      'tripadvisor': {
+        category: 'Online Travel Agency',
+        title: 'TripAdvisor',
+        image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&h=400&fit=crop',
+        description: 'TripAdvisor is the world\'s largest travel guidance platform with reviews from real travelers. Beyond booking, TripAdvisor offers forums, photos, and recommendations to help plan perfect trips.',
+        features: ['Millions of traveler reviews', 'Hotel and restaurant rankings', 'Experience and tour bookings', 'Travel forums community', 'Photos and travel guides', 'Comparison shopping tools']
+      },
+
+      // Travel & Tourism - Tour Operators
+      'intrepid': {
+        category: 'Tour Operator',
+        title: 'Intrepid Travel',
+        image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&h=400&fit=crop',
+        description: 'Intrepid Travel offers small-group adventure tours with a focus on responsible travel and authentic experiences. From trekking to cultural immersion, Intrepid connects travelers with local communities.',
+        features: ['Small group adventures', 'Responsible travel certified', 'Local guides and experiences', 'Various activity levels', 'Off-the-beaten-path destinations', 'Carbon-offset travel']
+      },
+      'gadventures': {
+        category: 'Tour Operator',
+        title: 'G Adventures',
+        image: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&h=400&fit=crop',
+        description: 'G Adventures specializes in small-group adventure travel across all seven continents. With various travel styles and a commitment to community tourism, G Adventures creates life-changing experiences.',
+        features: ['Seven continents coverage', 'Multiple travel styles', 'Community tourism projects', '18-to-Thirtysomethings trips', 'Family adventures', 'Local living experiences']
+      },
+      'contiki': {
+        category: 'Tour Operator',
+        title: 'Contiki',
+        image: 'https://images.unsplash.com/photo-1530521954074-e64f6810b32d?w=800&h=400&fit=crop',
+        description: 'Contiki specializes in tours for 18-35 year olds, offering social travel experiences in Europe, Asia, Australia, and beyond. Known for high-energy trips and making lifelong friends, Contiki turns travel into adventure.',
+        features: ['Ages 18-35 exclusively', 'Social travel experiences', 'Expert Trip Managers', 'Flexible Free Time Add-Ons', 'Party hostel to boutique stays', 'Global network of travelers']
+      },
+      'viking': {
+        category: 'Tour Operator',
+        title: 'Viking River Cruises',
+        image: 'https://images.unsplash.com/photo-1578922746574-75defb31e7a6?w=800&h=400&fit=crop',
+        description: 'Viking River Cruises offers destination-focused river cruising on the world\'s great waterways. With inclusive shore excursions and cultural enrichment, Viking provides thoughtful luxury for explorers.',
+        features: ['European river cruising', 'All shore excursions included', 'Cultural enrichment lectures', 'Complimentary wine and beer', 'Spacious staterooms', 'Destination-immersive experiences']
+      },
+
+      // Travel & Tourism - Airlines
+      'delta': {
+        category: 'Airline',
+        title: 'Delta Air Lines',
+        image: 'https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?w=800&h=400&fit=crop',
+        description: 'Delta Air Lines is a major U.S. airline known for reliability, service, and extensive route network. With SkyMiles rewards and premium cabin experiences, Delta strives to make every journey exceptional.',
+        features: ['Extensive domestic and international routes', 'SkyMiles rewards program', 'Delta One business class', 'Free in-flight entertainment', 'Complimentary snacks and beverages', 'Delta Sky Club lounges']
+      },
+      'emirates': {
+        category: 'Airline',
+        title: 'Emirates',
+        image: 'https://images.unsplash.com/photo-1583604310111-9c8a3b3a4925?w=800&h=400&fit=crop',
+        description: 'Emirates is a luxury airline based in Dubai, known for award-winning service and modern fleet. Flying to six continents, Emirates offers exceptional hospitality and industry-leading in-flight entertainment.',
+        features: ['Award-winning service', 'ice in-flight entertainment', 'Luxury First Class suites', 'Onboard WiFi', 'Complimentary meals and drinks', 'Shower spas on A380 aircraft']
+      },
+      'singapore': {
+        category: 'Airline',
+        title: 'Singapore Airlines',
+        image: 'https://images.unsplash.com/photo-1569629743817-70d8db6c323b?w=800&h=400&fit=crop',
+        description: 'Singapore Airlines is renowned for exceptional service and luxurious travel experiences. Consistently rated as the world\'s best airline, Singapore Airlines sets industry standards for comfort and hospitality.',
+        features: ['World\'s best airline awards', 'Book the Cook meal service', 'KrisFlyer miles program', 'Singapore Girl service excellence', 'Suite Class on A380', 'Extensive Asian routes']
+      },
+      'southwest': {
+        category: 'Airline',
+        title: 'Southwest Airlines',
+        image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=800&h=400&fit=crop',
+        description: 'Southwest Airlines is America\'s largest domestic carrier, known for no bag fees, no change fees, and friendly service. With open seating and point-to-point routes, Southwest makes flying simple.',
+        features: ['No bag fees or change fees', 'Rapid Rewards program', 'Two free checked bags', 'Open seating policy', 'Friendly crew culture', 'Low fares on domestic routes']
+      },
+
+      // Travel & Tourism - Cruise Lines
+      'royalcaribbean': {
+        category: 'Cruise Line',
+        title: 'Royal Caribbean International',
+        image: 'https://images.unsplash.com/photo-1555937751-4b83e59c6fa6?w=800&h=400&fit=crop',
+        description: 'Royal Caribbean International offers innovative cruise experiences with the world\'s largest ships. From rock climbing and surfing simulators to Broadway shows, Royal Caribbean delivers adventure at sea.',
+        features: ['World\'s largest cruise ships', 'Rock climbing and surf simulators', 'Broadway-style entertainment', 'Multiple dining venues', 'Private island destinations', 'Crown & Anchor loyalty program']
+      },
+      'carnival': {
+        category: 'Cruise Line',
+        title: 'Carnival Cruise Line',
+        image: 'https://images.unsplash.com/photo-1578922746574-75defb31e7a6?w=800&h=400&fit=crop',
+        description: 'Carnival Cruise Line is "The World\'s Most Popular Cruise Line," known for fun, affordable vacations. With lively entertainment, great food, and family-friendly atmosphere, Carnival promises fun for everyone.',
+        features: ['Affordable cruise vacations', 'Fun Ship entertainment', 'Kids programs and water slides', 'Guy Fieri restaurants', 'Private island destinations', 'VIFP Club rewards']
+      },
+      'norwegian': {
+        category: 'Cruise Line',
+        title: 'Norwegian Cruise Line',
+        image: 'https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=800&h=400&fit=crop',
+        description: 'Norwegian Cruise Line pioneered Freestyle Cruising with no set dining times or assigned seating. Offering freedom and flexibility, Norwegian provides contemporary cruising with diverse entertainment.',
+        features: ['Freestyle Cruising flexibility', 'No fixed dining times', 'Multiple complimentary restaurants', 'Broadway shows at sea', 'Thermal spa suites', 'Private island Great Stirrup Cay']
+      },
+      'princess': {
+        category: 'Cruise Line',
+        title: 'Princess Cruises',
+        image: 'https://images.unsplash.com/photo-1581795669633-91ef7c9be40f?w=800&h=400&fit=crop',
+        description: 'Princess Cruises offers "Come Back New" experiences with destination-immersive cruising. Famous from "The Love Boat," Princess combines relaxation with discovery across all seven continents.',
+        features: ['Seven continents destinations', 'MedallionClass personalization', 'Movies Under the Stars', 'Chef\'s Table specialty dining', 'Discovery at Sea programs', 'Captain\'s Circle rewards']
+      },
+
+      // Entertainment - Theme Parks
+      'disney': {
+        category: 'Theme Park',
+        title: 'Walt Disney World Resort',
+        image: 'https://images.unsplash.com/photo-1597395681157-d8f397bc5d8e?w=800&h=400&fit=crop',
+        description: 'Walt Disney World Resort in Orlando is the most magical place on earth, featuring four theme parks, two water parks, and dozens of resort hotels. From Magic Kingdom to Star Wars, Disney creates unforgettable family memories.',
+        features: ['Four major theme parks', 'Two water parks', 'Character meet and greets', 'Disney Resort hotels', 'MagicBand technology', 'Disney Genie+ planning']
+      },
+      'universal': {
+        category: 'Theme Park',
+        title: 'Universal Studios',
+        image: 'https://images.unsplash.com/photo-1556178985-08082192226c?w=800&h=400&fit=crop',
+        description: 'Universal Studios offers thrilling theme park experiences based on blockbuster movies and TV shows. Home to The Wizarding World of Harry Potter, Universal brings entertainment to life with cutting-edge attractions.',
+        features: ['Movie-based attractions', 'The Wizarding World of Harry Potter', 'Cutting-edge ride technology', 'Halloween Horror Nights', 'CityWalk entertainment district', 'Express Pass skip-the-line access']
+      },
+      'sixflags': {
+        category: 'Theme Park',
+        title: 'Six Flags Entertainment',
+        image: 'https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=800&h=400&fit=crop',
+        description: 'Six Flags operates thrill parks across North America with world-class roller coasters and extreme rides. Known for adrenaline-pumping experiences and seasonal events, Six Flags delivers thrills for daredevils.',
+        features: ['World-record breaking coasters', 'Extreme thrill rides', 'Fright Fest Halloween event', 'Holiday in the Park', 'Season pass options', 'Multiple locations nationwide']
+      },
+      'seaworld': {
+        category: 'Theme Park',
+        title: 'SeaWorld Parks',
+        image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=400&fit=crop',
+        description: 'SeaWorld Parks combine marine life experiences with thrilling rides and entertainment. Focused on animal care and conservation, SeaWorld educates while entertaining with up-close animal encounters.',
+        features: ['Marine animal encounters', 'Conservation education', 'Thrilling roller coasters', 'Animal shows and presentations', 'Behind-the-scenes tours', 'Annual pass benefits']
+      },
+
+      // Entertainment - Casinos
+      'caesars': {
+        category: 'Casino & Gaming Resort',
+        title: 'Caesars Palace',
+        image: 'https://images.unsplash.com/photo-1566501206188-5dd0cf160a0e?w=800&h=400&fit=crop',
+        description: 'Caesars Palace is an iconic Las Vegas resort combining Roman-themed luxury with world-class gaming, dining, and entertainment. With legendary headliners and upscale amenities, Caesars defines Vegas opulence.',
+        features: ['Roman-themed luxury casino', 'Celebrity chef restaurants', 'The Colosseum entertainment venue', 'Garden of the Gods pools', 'Qua Baths & Spa', 'Forum Shops luxury shopping']
+      },
+      'mgm': {
+        category: 'Casino & Gaming Resort',
+        title: 'MGM Grand',
+        image: 'https://images.unsplash.com/photo-1561501875-a2a129003238?w=800&h=400&fit=crop',
+        description: 'MGM Grand is one of the world\'s largest hotels and casinos, offering endless entertainment options. From concerts to championship boxing, MGM Grand delivers Vegas excitement on a grand scale.',
+        features: ['One of world\'s largest hotels', 'MGM Grand Garden Arena', 'Extensive gaming floor', 'Multiple pools and lazy river', 'Celebrity chef dining', 'Topgolf entertainment']
+      },
+      'venetian': {
+        category: 'Casino & Gaming Resort',
+        title: 'The Venetian',
+        image: 'https://images.unsplash.com/photo-1580837119756-563d608dd119?w=800&h=400&fit=crop',
+        description: 'The Venetian Las Vegas recreates Venice\'s romantic atmosphere with gondola rides, Italian architecture, and luxury accommodations. All suites are spacious with sunken living rooms and marble bathrooms.',
+        features: ['All-suite accommodations', 'Indoor gondola rides', 'Grand Canal Shoppes', 'Canyon Ranch SpaClub', 'TAO nightclub', 'Celebrity chef restaurants']
+      },
+      'wynn': {
+        category: 'Casino & Gaming Resort',
+        title: 'Wynn Las Vegas',
+        image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&h=400&fit=crop',
+        description: 'Wynn Las Vegas represents the pinnacle of luxury with Forbes Five-Star rating. Featuring a championship golf course, haute couture shopping, and refined gaming, Wynn offers sophisticated Vegas elegance.',
+        features: ['Forbes Five-Star resort', 'Championship golf course', 'Le Rêve aquatic show', 'Award-winning restaurants', 'Tower Suites luxury', 'Haute couture shopping']
+      },
+
+      // Entertainment - Spas & Wellness
+      'canyonranch': {
+        category: 'Spa & Wellness Center',
+        title: 'Canyon Ranch',
+        image: 'https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?w=800&h=400&fit=crop',
+        description: 'Canyon Ranch is a wellness pioneer offering destination health resorts and spas. With integrative health approaches, fitness programs, and spa treatments, Canyon Ranch transforms wellness into lifestyle.',
+        features: ['Integrative health consultations', 'Fitness and exercise programs', 'Healthy gourmet cuisine', 'Spa treatments and therapies', 'Mindfulness and spiritual wellness', 'Outdoor adventure activities']
+      },
+      'miraval': {
+        category: 'Spa & Wellness Center',
+        title: 'Miraval Resorts & Spas',
+        image: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&h=400&fit=crop',
+        description: 'Miraval offers mindful luxury at desert and mountain destinations. With all-inclusive wellness experiences, meditation, and life-balancing programs, Miraval helps guests find their best selves.',
+        features: ['Mindfulness-based experiences', 'All-inclusive wellness programs', 'Equine therapy', 'Aerial yoga and fitness', 'Farm-to-table dining', 'Desert or mountain settings']
+      },
+      'hotelspas': {
+        category: 'Spa & Wellness Center',
+        title: 'Luxury Hotel Spas',
+        image: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&h=400&fit=crop',
+        description: 'Luxury hotel spas offer world-class wellness experiences within resort and hotel settings. From traditional therapies to innovative treatments, hotel spas provide relaxation and rejuvenation for guests.',
+        features: ['Signature spa treatments', 'Hydrotherapy facilities', 'Fitness centers and classes', 'Healthy spa cuisine', 'Relaxation lounges', 'Private treatment suites']
+      }
+    };
+
+    function showModal(event, exampleId) {
+      event.stopPropagation();
+      
+      const data = exampleData[exampleId];
+      if (!data) return;
+      
+      document.getElementById('modalImage').src = data.image;
+      document.getElementById('modalCategory').textContent = data.category;
+      document.getElementById('modalTitle').textContent = data.title;
+      document.getElementById('modalDescription').textContent = data.description;
+      
+      const featuresList = document.getElementById('modalFeatures');
+      featuresList.innerHTML = '';
+      data.features.forEach(feature => {
+        const li = document.createElement('li');
+        li.textContent = feature;
+        featuresList.appendChild(li);
+      });
+      
+      document.getElementById('exampleModal').classList.add('active');
+    }
+
+    function closeModal(event) {
+      if (event) {
+        event.stopPropagation();
+      }
+      document.getElementById('exampleModal').classList.remove('active');
+    }
+
+    function toggleSector(card) {
+      const wasExpanded = card.classList.contains('expanded');
+      
+      // Close all cards
+      document.querySelectorAll('.sector-card').forEach(c => {
+        c.classList.remove('expanded');
+      });
+      
+      // If card wasn't expanded, expand it
+      if (!wasExpanded) {
+        card.classList.add('expanded');
+        // Scroll to card smoothly
+        setTimeout(() => {
+          card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+      }
+    }
+
+    const defaultConfig = {
+      main_title: "Welcome to the World of Hospitality",
+      tagline: "Where Service Meets Excellence",
+      intro_title: "What is the Hospitality Industry?",
+      intro_text: "The hospitality industry is a vibrant and diverse sector dedicated to providing exceptional service and memorable experiences. It encompasses businesses that offer accommodation, food and beverage services, entertainment, and travel services, all united by a commitment to guest satisfaction and comfort.",
+      sectors_title: "Key Sectors - Click to Explore",
+      background_color: "#2c5f7c",
+      card_background: "#ffffff",
+      text_color: "#2c5f7c",
+      accent_color: "#d4a574",
+      footer_background: "#1a3a4d",
+      font_family: "Georgia",
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseFontStack = 'serif';
+      const baseSize = config.font_size || defaultConfig.font_size;
+
+      // Update text content
+      document.getElementById('main-title').textContent = config.main_title || defaultConfig.main_title;
+      document.getElementById('tagline').textContent = config.tagline || defaultConfig.tagline;
+      document.getElementById('intro-title').textContent = config.intro_title || defaultConfig.intro_title;
+      document.getElementById('intro-text').textContent = config.intro_text || defaultConfig.intro_text;
+      document.getElementById('sectors-title').textContent = config.sectors_title || defaultConfig.sectors_title;
+
+      // Update colors
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const cardBackground = config.card_background || defaultConfig.card_background;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      const footerBackground = config.footer_background || defaultConfig.footer_background;
+
+      const sectorCards = document.querySelectorAll('.sector-card');
+      sectorCards.forEach(card => {
+        card.style.background = cardBackground;
+      });
+
+      document.querySelector('.footer').style.background = footerBackground;
+
+      const headings = document.querySelectorAll('.intro h2, .sectors h2, .sector-card h3, .examples-title, .example-name');
+      headings.forEach(heading => {
+        heading.style.color = textColor;
+      });
+
+      const expandIcons = document.querySelectorAll('.expand-icon');
+      expandIcons.forEach(icon => {
+        icon.style.color = accentColor;
+      });
+
+      // Update fonts
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      
+      // Update font sizes
+      document.querySelector('.hero h1').style.fontSize = `${baseSize * 3.5}px`;
+      document.querySelector('.hero p').style.fontSize = `${baseSize * 1.5}px`;
+      document.querySelector('.intro h2').style.fontSize = `${baseSize * 2.5}px`;
+      document.querySelector('.intro-text').style.fontSize = `${baseSize * 1.25}px`;
+      document.querySelector('.sectors h2').style.fontSize = `${baseSize * 2.25}px`;
+      
+      document.querySelectorAll('.sector-card h3').forEach(h3 => {
+        h3.style.fontSize = `${baseSize * 1.5}px`;
+      });
+      document.querySelectorAll('.short-desc').forEach(p => {
+        p.style.fontSize = `${baseSize}px`;
+      });
+      document.querySelectorAll('.examples-title').forEach(title => {
+        title.style.fontSize = `${baseSize * 1.125}px`;
+      });
+      document.querySelectorAll('.example-name').forEach(name => {
+        name.style.fontSize = `${baseSize}px`;
+      });
+      document.querySelectorAll('.example-desc').forEach(desc => {
+        desc.style.fontSize = `${baseSize * 0.875}px`;
+      });
+      document.querySelectorAll('.hotel-examples').forEach(ex => {
+        ex.style.fontSize = `${baseSize * 0.8125}px`;
+      });
+      document.querySelector('.footer p').style.fontSize = `${baseSize}px`;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.card_background || defaultConfig.card_background,
+            set: (value) => {
+              config.card_background = value;
+              window.elementSdk.setConfig({ card_background: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => config.footer_background || defaultConfig.footer_background,
+            set: (value) => {
+              config.footer_background = value;
+              window.elementSdk.setConfig({ footer_background: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["main_title", config.main_title || defaultConfig.main_title],
+        ["tagline", config.tagline || defaultConfig.tagline],
+        ["intro_title", config.intro_title || defaultConfig.intro_title],
+        ["intro_text", config.intro_text || defaultConfig.intro_text],
+        ["sectors_title", config.sectors_title || defaultConfig.sectors_title]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a2fe02d93384ee4',t:'MTc2Mzg5MjYxNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
